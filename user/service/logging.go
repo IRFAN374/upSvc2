@@ -42,7 +42,7 @@ func (M loggingMiddleware) Register(arg0 context.Context, arg1 string, arg2 stri
 	return M.next.Register(arg0, arg1, arg2)
 }
 
-func (M loggingMiddleware) Login(arg0 context.Context, arg1 string, arg2 string) (res0 error) {
+func (M loggingMiddleware) Login(arg0 context.Context, arg1 string, arg2 string) (res0 string, res1 error) {
 
 	defer func(begin time.Time) {
 		M.logger.Log(
@@ -51,8 +51,10 @@ func (M loggingMiddleware) Login(arg0 context.Context, arg1 string, arg2 string)
 				UserName: arg1,
 				Password: arg2,
 			},
-			"response", logLoginResponse{},
-			"err", res0,
+			"response", logLoginResponse{
+				UserId: res0,
+			},
+			"err", res1,
 			"took", time.Since(begin),
 		)
 
@@ -75,5 +77,6 @@ type (
 		Password string
 	}
 	logLoginResponse struct {
+		UserId string
 	}
 )

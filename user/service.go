@@ -8,7 +8,7 @@ import (
 
 type Service interface {
 	Register(ctx context.Context, username string, password string) (userId string, err error) // remove userId from here
-	Login(ctx context.Context, username string, password string) (err error)                   // add login response here
+	Login(ctx context.Context, username string, password string) (userId string, err error)    // add login response here
 }
 
 type service struct {
