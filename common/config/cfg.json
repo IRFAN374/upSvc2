@@ -1,5 +1,5 @@
 {
     "service_name": "user-profile-service",
     "redis_addr": "localhost:6379",
-    "http_port": "9000"
+    "http_port": 9000
 }
