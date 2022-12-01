@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 
+	"github.com/IRFAN374/upSvc2/reposiotry/user"
 	"github.com/IRFAN374/upSvc2/token"
 )
 
@@ -13,11 +14,13 @@ type Service interface {
 
 type service struct {
 	tokenSvc token.Service
+	userRepo user.Repository
 }
 
-func NewService(tokenSvc token.Service) *service {
+func NewService(tokenSvc token.Service, userRepo user.Repository) *service {
 	return &service{
 		tokenSvc: tokenSvc,
+		userRepo: userRepo,
 	}
 }
 
@@ -25,6 +28,6 @@ func (svc *service) Register(ctx context.Context, username string, password stri
 	return
 }
 
-func (svc *service) Login(ctx context.Context, username string, password string) (err error) {
+func (svc *service) Login(ctx context.Context, username string, password string) (userId string, err error) {
 	return
 }

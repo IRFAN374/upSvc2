@@ -29,6 +29,7 @@ require (
 require (
 	github.com/go-kit/kit v0.12.0
 	github.com/go-kit/log v0.2.1
+	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/oklog/oklog v0.3.2
 	github.com/opentracing/opentracing-go v1.2.0
