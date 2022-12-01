@@ -23,6 +23,7 @@ require (
 	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/text v0.3.7 // indirect
+	google.golang.org/grpc v1.40.0 // indirect
 )
 
 require (
@@ -30,6 +31,7 @@ require (
 	github.com/go-kit/log v0.2.1
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/oklog/oklog v0.3.2
+	github.com/opentracing/opentracing-go v1.2.0
 	go.mongodb.org/mongo-driver v1.11.0
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
