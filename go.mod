@@ -27,12 +27,14 @@ require (
 )
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-kit/kit v0.12.0
 	github.com/go-kit/log v0.2.1
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/oklog/oklog v0.3.2
 	github.com/opentracing/opentracing-go v1.2.0
+	github.com/twinj/uuid v1.0.0
 	go.mongodb.org/mongo-driver v1.11.0
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
