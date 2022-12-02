@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/IRFAN374/upSvc2/models"
-	redis "github.com/go-redis/redis/v8"
+	redis "github.com/go-redis/redis"
 )
 
 const (

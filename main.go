@@ -30,7 +30,6 @@ import (
 	userMongo "github.com/IRFAN374/upSvc2/reposiotry/user/mongo"
 	userRepoMw "github.com/IRFAN374/upSvc2/reposiotry/user/service"
 
-	redis "github.com/go-redis/redis/v8"
 	"github.com/gorilla/mux"
 
 	"github.com/oklog/oklog/pkg/group"
@@ -44,15 +43,9 @@ import (
 
 var env string
 
+
 func init() {
 	flag.StringVar(&env, "env", "", "kube env")
-}
-
-var redisClient *redis.Client
-
-func init() {
-	//Initializing redis
-	redisClient = db.ConnectRedis()
 }
 
 func main() {
@@ -70,6 +63,14 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("%s-%s", cfg.ServiceName, env)
+	redisClient, err := db.ConnectRedis(cfg.RedisAddr)
+	if err != nil {
+		panic(err)
+	}
+	mongoClient, dbName, err := db.MongoConnection(cfg.MongoURI)
+	if err != nil {
+		panic(err)
+	}
 
 	debugLogger, _, _, _ := getLogger(cfg.ServiceName, zapcore.DebugLevel)
 
@@ -107,7 +108,7 @@ func main() {
 
 	var userRepo userRepository.Repository
 	{
-		userRepo = userMongo.NewMongoReposiotry()
+		userRepo = userMongo.NewMongoReposiotry(mongoClient, dbName)
 		userRepo = userRepoMw.LoggingMiddleware(log.With(debugLogger, "reposiotry", "user reposiotry"))(userRepo)
 	}
 

@@ -16,6 +16,8 @@ type Config struct {
 
 	RedisAddr string `json:"redis_addr"`
 	HttpPort  int    `json:"http_port"`
+
+	MongoURI string `json:"mongo_uri"`
 }
 
 func NewConfig(Isdefault bool) (c Config, err error) {
